@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+        //UberMedia.requestLocationPermission(this);
     }
 }
-
-
