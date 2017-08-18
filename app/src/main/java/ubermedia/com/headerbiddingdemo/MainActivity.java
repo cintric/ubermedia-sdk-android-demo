@@ -3,6 +3,7 @@ package ubermedia.com.headerbiddingdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import ubermedia.com.ubermedia.UMBannerView;
 import ubermedia.com.ubermedia.UberMedia;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,5 +14,9 @@ public class MainActivity extends AppCompatActivity {
 
         UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
         UberMedia.requestLocationPermission(this);
+
+        // Change the refresh rate to 15 seconds
+        UMBannerView adView = (UMBannerView) findViewById(R.id.adview);
+        adView.setAdRefreshRate(15);
     }
 }
