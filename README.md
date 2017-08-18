@@ -82,7 +82,7 @@ To center the banner view, change the above example to:
         app:layout_constraintRight_toRightOf="parent" />
 ```
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/adview.png)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/ad-view.png)
 
 ### Ad Units
 
