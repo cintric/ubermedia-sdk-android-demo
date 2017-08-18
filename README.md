@@ -94,7 +94,7 @@ Please contact us at erwan@ubermedia.com for production ad units.
 
 ### Ad Refresh Rate
 
-By defeault, **a banner view fetches a new ad every 30 seconds**. You can change the refresh rate by calling `setAdRefreshRate` on the banner view. Refresh rate must be between 10 seconds and 120 seconds, or 0 to disable refreshing.
+By default, **a banner view fetches a new ad every 30 seconds**. You can change the refresh rate by calling `setAdRefreshRate` on the banner view. Refresh rate must be between 10 seconds and 120 seconds, or 0 to disable refreshing.
 
 ![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/refresh-rate.PNG)
 
