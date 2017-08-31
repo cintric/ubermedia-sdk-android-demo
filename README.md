@@ -1,4 +1,4 @@
-# Android demo app for the UberMedia Header Bidding SDK (v0.1.4)
+# Android demo app for the UberMedia Header Bidding SDK (v0.1.4) - AdMarvel Adapter
 
 The UberMedia Header Bidding SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
@@ -49,41 +49,6 @@ Put in your own sdk key and secret here.**
 
 ![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/sdk-init.png)
 
-### Displaying Banner Ad
-
-
-In your parent layout, add the following:
-
-```xml
-xmlns:ubermedia="http://schemas.android.com/apk/res-auto"
-```
-
-And add the banner view:
-
-```xml
-    <ubermedia.com.ubermedia.UMBannerView
-        android:id="@+id/adview"
-        ubermedia:ad_unit="test_ad_placement_id"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" />
-```
-
-
-To center the banner view, change the above example to:
-
-```xml
-    <ubermedia.com.ubermedia.UMBannerView
-        android:id="@+id/adview"
-        ubermedia:ad_unit="test_ad_placement_id"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-```
-
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/adview.png)
-
 ### Ad Units
 
 Inside the UMBannerView xml is an `ubermedia:ad_unit` attribute.
@@ -92,11 +57,6 @@ Test Ad Unit: `test_ad_placement_id` will return a test 320x50 banner.
 
 Please contact us at erwan@ubermedia.com for production ad units.
 
-### Ad Refresh Rate
-
-By defeault, **a banner view fetches a new ad every 30 seconds**. You can change the refresh rate by calling `setAdRefreshRate` on the banner view. Refresh rate must be between 10 seconds and 120 seconds, or 0 to disable refreshing.
-
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/refresh-rate.PNG)
 
 ### Optional: Enable Location
 
