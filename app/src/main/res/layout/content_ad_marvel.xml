@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ubermedia.com.headerbiddingdemo.MainActivity"
+    xmlns:admarvel="http://schemas.android.com/apk/res-auto"
+    tools:showIn="@layout/activity_main">
+
+
+<com.admarvel.android.ads.AdMarvelView
+    android:id="@+id/ad"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    admarvel:backgroundColor="#0000ff"
+    admarvel:textBackgroundColor="#726D6D"
+    admarvel:textFontColor="#00FF00"
+    admarvel:textBorderColor="#000000"
+    admarvel:adMarvelViewSize="HEIGHT_50"
+    />
+
+</android.support.constraint.ConstraintLayout>

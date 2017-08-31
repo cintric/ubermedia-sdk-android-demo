@@ -1,9 +1,10 @@
 package ubermedia.com.headerbiddingdemo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import ubermedia.com.ubermedia.UMBannerView;
+import com.admarvel.android.ads.AdMarvelView;
+
 import ubermedia.com.ubermedia.UberMedia;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,11 +13,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final String adUnit = "admarvel-adapter-placement-test1";
+        final String partnerId = "";
+        final String siteId = "";
+
         UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
         UberMedia.requestLocationPermission(this);
+        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
 
-        // Change the refresh rate to 15 seconds
-        UMBannerView adView = (UMBannerView) findViewById(R.id.adview);
-        adView.setAdRefreshRate(15);
+        AdMarvelView adMarvelView = (AdMarvelView) findViewById(R.id.ad);
+        adMarvelView.requestNewAd(UberMedia.getTargetParams(adUnit), partnerId, siteId);
     }
 }

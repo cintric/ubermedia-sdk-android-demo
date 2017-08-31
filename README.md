@@ -2,13 +2,6 @@
 
 The UberMedia Header Bidding SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
-## Mediation Adapters
-To use an adapter, please follow these guides:
-
-[**AdMarvel Adapter**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
-
-**MoPub Adapter** - Coming soon to an SDK near you.
-
 ## Demo App
 
 Import this project into Android Studio and press run. You may be prompted to install the necessary platform versions.
@@ -89,7 +82,7 @@ To center the banner view, change the above example to:
         app:layout_constraintRight_toRightOf="parent" />
 ```
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/ad-view.png)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/adview.png)
 
 ### Ad Units
 
@@ -101,7 +94,7 @@ Please contact us at erwan@ubermedia.com for production ad units.
 
 ### Ad Refresh Rate
 
-By default, **a banner view fetches a new ad every 30 seconds**. You can change the refresh rate by calling `setAdRefreshRate` on the banner view. Refresh rate must be between 10 seconds and 120 seconds, or 0 to disable refreshing.
+By defeault, **a banner view fetches a new ad every 30 seconds**. You can change the refresh rate by calling `setAdRefreshRate` on the banner view. Refresh rate must be between 10 seconds and 120 seconds, or 0 to disable refreshing.
 
 ![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/refresh-rate.PNG)
 
