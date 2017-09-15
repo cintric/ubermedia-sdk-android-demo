@@ -15,9 +15,9 @@
     app:layout_constraintLeft_toLeftOf="parent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    admarvel:backgroundColor="#0000ff"
-    admarvel:textBackgroundColor="#726D6D"
-    admarvel:textFontColor="#00FF00"
+    admarvel:backgroundColor="#7f8c8d"
+    admarvel:textBackgroundColor="#7f8c8d"
+    admarvel:textFontColor="#fff"
     admarvel:textBorderColor="#000000"
     admarvel:adMarvelViewSize="HEIGHT_50"
     />

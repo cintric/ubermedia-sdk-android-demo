@@ -8,13 +8,16 @@ import com.admarvel.android.ads.omwsdkconnector.OMWCustomBannerListener;
 
 import java.util.Map;
 
+import ubermedia.com.ubermedia.UMAdapterBannerView;
 import ubermedia.com.ubermedia.UberMedia;
 
 public class AdMarvelAdapter implements OMWCustomBanner {
 
+    private final String CLASS_TAG = "AdMarvelAdapter";
+
     @Override
     public void requestBannerAd(Context context, OMWCustomBannerListener omwCustomBannerListener, Map<String, String> serverParam, Map<String, Object> targetParam) {
-        Log.d("ADMARVEL", "ADMARVEL CUSTOM ADAPTER WAS CALLED");
+        Log.d(CLASS_TAG, "ADMARVEL CUSTOM ADAPTER WAS CALLED");
 
         String adUnit = "default_ad_unit";
         String adUnitKey = "UMPLC";
@@ -23,8 +26,21 @@ public class AdMarvelAdapter implements OMWCustomBanner {
             adUnit = serverParam.get(adUnitKey).toString();
         }
 
-        omwCustomBannerListener.onBannerAdReceived(UberMedia.getAdapterBannerView(context, adUnit));
+        Log.d(CLASS_TAG, "Ad Unit Received: " + adUnit);
+
+        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit);
+
+        // Use this instead if you want to change the background color of the view
+        // UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, "#000");
+
+        // Only use this if you don't want the view to automatically resize to ad - useful if you want to keep it full width
+        // bannerView.adaptToAdSize(false);
+
+        omwCustomBannerListener.onBannerAdReceived(bannerView);
         omwCustomBannerListener.onBannerAdExpand();
+
+        // Ad was shown
+        UberMedia.removeCacheAdPlacement(adUnit);
     }
 
     @Override
