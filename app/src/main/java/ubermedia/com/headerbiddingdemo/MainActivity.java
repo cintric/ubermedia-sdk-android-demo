@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(CLASS_TAG, arg1 + "");
                         // AdMarvel Error Codes: https://wiki.operamediaworks.com/display/AMS/Error+Codes
                         if (arg1 != 304) {
+                            // Cache a new ad
+                            UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+                            
                             Log.d(CLASS_TAG, "No ad was received. Call your app waterfall here.");
                             // Call your app waterfall here
                         }
