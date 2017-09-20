@@ -13,7 +13,7 @@ import ubermedia.com.ubermedia.UberMedia;
 
 public class AdMarvelAdapter implements OMWCustomBanner {
 
-    private final String CLASS_TAG = "AdMarvelAdapter";
+    private final String CLASS_TAG = "UberMedia";
 
     @Override
     public void requestBannerAd(Context context, OMWCustomBannerListener omwCustomBannerListener, Map<String, String> serverParam, Map<String, Object> targetParam) {
