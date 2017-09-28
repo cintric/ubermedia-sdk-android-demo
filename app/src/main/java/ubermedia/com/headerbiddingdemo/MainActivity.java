@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
 
+        //UberMedia.DisableLogging();
+
         startRefreshTimer();
     }
 
