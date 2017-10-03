@@ -47,7 +47,6 @@ public class MoPubAdapter extends CustomEventBanner {
             customEventBannerListener.onBannerFailed(MoPubErrorCode.NO_FILL);
         }
 
-        // Ad was shown
         UberMedia.removeCacheAdPlacement(adUnit);
     }
 
