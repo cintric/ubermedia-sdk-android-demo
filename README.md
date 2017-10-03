@@ -7,7 +7,7 @@ To use an adapter, please follow these guides:
 
 [**AdMarvel Adapter**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
 
-**MoPub Adapter** - Coming soon to an SDK near you.
+[**MoPub Adapter**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/MoPub-Adapter)
 
 ## Demo App
 
