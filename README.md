@@ -1,3 +1,4 @@
+# Android demo app for the UberMedia Header Bidding SDK (v0.3.3) - AdMarvel Adapter
 
 The UberMedia Header Bidding SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
