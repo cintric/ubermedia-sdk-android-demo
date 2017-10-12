@@ -9,9 +9,10 @@ import com.mopub.mobileads.MoPubErrorCode;
 import java.util.Map;
 
 import ubermedia.com.ubermedia.UMAdapterBannerView;
+import ubermedia.com.ubermedia.UMListener;
 import ubermedia.com.ubermedia.UberMedia;
 
-public class MoPubAdapter extends CustomEventBanner {
+public class MoPubAdapter extends CustomEventBanner implements UMListener {
     private final String CLASS_TAG = "UberMedia";
 
     private CustomEventBannerListener mBannerListener;
@@ -23,6 +24,8 @@ public class MoPubAdapter extends CustomEventBanner {
 
         Log.d(CLASS_TAG, "MOPUB CUSTOM ADAPTER WAS CALLED");
 
+        mBannerListener = customEventBannerListener;
+
         String adUnit = "default_ad_unit";
         String adUnitKey = "ad_unit_id";
 
@@ -32,7 +35,9 @@ public class MoPubAdapter extends CustomEventBanner {
 
         Log.d(CLASS_TAG, "Ad Unit Received: " + adUnit);
 
-        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit);
+        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, this);
+
+        Log.d(CLASS_TAG, bannerView.CurrentBid + "");
 
         if (bannerView.CurrentBid > 0.0) {
             // Use this instead if you want to change the background color of the view
@@ -47,10 +52,20 @@ public class MoPubAdapter extends CustomEventBanner {
             customEventBannerListener.onBannerFailed(MoPubErrorCode.NO_FILL);
         }
 
+        // Ad was shown
         UberMedia.removeCacheAdPlacement(adUnit);
     }
 
     @Override
     protected void onInvalidate() {
+    }
+
+    @Override
+    public void onAdClicked() {
+        Log.d(CLASS_TAG, "onAdClicked");
+
+        if (mBannerListener != null) {
+            mBannerListener.onBannerClicked();
+        }
     }
 }
