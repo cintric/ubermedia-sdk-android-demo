@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\elent\Documents\GitHub\ubermedia-sdk-android-demo\HeaderBiddingDemo.iml" filepath="C:\Users\elent\Documents\GitHub\ubermedia-sdk-android-demo\HeaderBiddingDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ubermedia/ubermedia.iml" filepath="$PROJECT_DIR$/ubermedia/ubermedia.iml" />
       <module fileurl="file://$PROJECT_DIR$/ubermedia-sdk-android-demo.iml" filepath="$PROJECT_DIR$/ubermedia-sdk-android-demo.iml" />
