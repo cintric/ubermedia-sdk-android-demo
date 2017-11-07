@@ -31,5 +31,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.6'
     testCompile 'junit:junit:4.12'
     compile project(':admarvel')
-    compile project(':ubermedia')
+    implementation project(':ubermedia')
 }
