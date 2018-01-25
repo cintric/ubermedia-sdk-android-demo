@@ -33,7 +33,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
 
         startRefreshTimer();
 
@@ -127,7 +127,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Log.d(CLASS_TAG, "onInterstitialFailed");
         setTextViewText("onInterstitialFailed");
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
     }
 
     @Override
@@ -139,7 +139,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Button button = (Button) findViewById(R.id.showInterstitialButton);
         button.setVisibility(View.INVISIBLE);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
     }
 
     @Override
