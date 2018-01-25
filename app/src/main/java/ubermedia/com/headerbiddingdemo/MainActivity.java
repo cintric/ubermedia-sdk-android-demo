@@ -1,9 +1,12 @@
 package ubermedia.com.headerbiddingdemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubView;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+        UberMedia.initializeUberMediaSDK(this, "e7d29a8bdbc9a7814538329a6be2c38d", "36e74c30afc1ab5d30319b4c0408e6455dab016c");
         UberMedia.requestLocationPermission(this);
 
         UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
@@ -35,6 +38,18 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
         //UberMedia.DisableLogging();
 
         startRefreshTimer();
+
+        Button button = (Button) findViewById(R.id.launchInterstitialActivityButton);
+
+        // Open interstitial test activity
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                Intent myIntent = new Intent(MainActivity.this,
+                        InterstitialActivity.class);
+
+                startActivity(myIntent);
+            }
+        });
     }
 
     private void startRefreshTimer() {
