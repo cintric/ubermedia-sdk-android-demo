@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UberMedia.initializeUberMediaSDK(this, "e7d29a8bdbc9a7814538329a6be2c38d", "36e74c30afc1ab5d30319b4c0408e6455dab016c");
+        UberMedia.initializeUberMediaSDK(this, "", "");
         UberMedia.requestLocationPermission(this);
 
         UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
