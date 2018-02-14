@@ -45,7 +45,6 @@ public class MoPubInterstitialAdapter extends CustomEventInterstitial implements
     protected void showInterstitial() {
         Log.d(CLASS_TAG, "Showing Adapter Interstitial");
         UberMedia.getAdapterInterstitialView(mParentContext, mAdUnit, this).show();
-        onInterstitialShown();
     }
 
     @Override
