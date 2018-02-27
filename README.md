@@ -2,18 +2,28 @@
 
 The UberMedia Header Bidding SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
-## Mediation Adapters
-To use an adapter, please follow these guides:
-
-[**AdMarvel Adapter**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
-
-[**MoPub Adapter**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/MoPub-Adapter)
 
 ## Demo App
 
 Import this project into Android Studio and press run. You may be prompted to install the necessary platform versions.
 
-## Installation
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/test-app.png)
+
+## Showing Ads
+
+If you've installed the ClearBid SDK as described below, please refer to these code samples:
+
+- [Banner - MoPub Auto Refresh](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/BannerAutoRefreshActivity.java)
+- [Banner - Refresh Timer](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/BannerRefreshTimerActivity.java)
+- [Mrec - MoPub Auto Refresh](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/MrecAutoRefresh.java)
+- [Interstitial](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/InterstitialActivity.java)
+
+## Adapter Examples
+
+- [Banner & Mrec Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/com/ubermedia/MoPubAdapter.java)
+- [Interstitial Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/com/ubermedia/MoPubInterstitialAdapter.java)
+
+## Installation of ClearBid SDK
 
 Installing the UberMedia Header Bidding SDK is done in 3 steps.
 
