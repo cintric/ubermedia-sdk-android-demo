@@ -1,19 +1,16 @@
 package ubermedia.com.headerbiddingdemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubView;
 
 import ubermedia.com.ubermedia.UberMedia;
 
-public class MainActivity extends AppCompatActivity implements MoPubView.BannerAdListener {
+public class BannerRefreshTimerActivity extends AppCompatActivity implements MoPubView.BannerAdListener {
     private final String CLASS_TAG = "UberMedia";
 
     private final Handler mHandler = new Handler();
@@ -22,34 +19,24 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
     private final int mAdRefreshRate = 15000;
     private final int mTimeBeforeFirstAdIsShown = 7000;
 
+    /*     Insert your own ClearBid and MoPub ad units here    */
     private final String adUnit = "";
     private final String moPubAdUnit = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_banner_refresh_timer);
 
-        UberMedia.initializeUberMediaSDK(this, "", "");
+        // You only need to call this method once in the app, usually from the MainActivity
+        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
         UberMedia.requestLocationPermission(this);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
         //UberMedia.DisableLogging();
 
         startRefreshTimer();
-
-        Button button = (Button) findViewById(R.id.launchInterstitialActivityButton);
-
-        // Open interstitial test activity
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                Intent myIntent = new Intent(MainActivity.this,
-                        InterstitialActivity.class);
-
-                startActivity(myIntent);
-            }
-        });
     }
 
     private void startRefreshTimer() {
@@ -65,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
                 String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
-                MoPubView moPubView = (MoPubView) findViewById(R.id.adview);
+                MoPubView moPubView = (MoPubView) findViewById(R.id.bannerTimerView);
                 moPubView.setAdUnitId(moPubAdUnit);
                 moPubView.setKeywords(targetKeywords);
-                moPubView.setBannerAdListener(MainActivity.this);
+                moPubView.setBannerAdListener(BannerRefreshTimerActivity.this);
 
                 moPubView.loadAd();
 
@@ -114,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
         Log.d(CLASS_TAG, "onBannerLoaded");
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
     }
 
     @Override
@@ -122,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements MoPubView.BannerA
         Log.d(CLASS_TAG, "onBannerFailed: " + errorCode.toString());
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
         Log.d(CLASS_TAG, "No ad was received. Call your app waterfall here.");
         // Call your app waterfall here

@@ -12,7 +12,7 @@ import ubermedia.com.ubermedia.UMAdapterBannerView;
 import ubermedia.com.ubermedia.UMListener;
 import ubermedia.com.ubermedia.UberMedia;
 
-public class MoPubAdapter extends CustomEventBanner implements UMListener {
+public class MoPubMrecAdapter extends CustomEventBanner implements UMListener {
     private final String CLASS_TAG = "UberMedia";
 
     private CustomEventBannerListener mBannerListener;

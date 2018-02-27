@@ -23,6 +23,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
     private final int mAdRefreshRate = 45000;
     private final int mTimeBeforeFirstAdIsShown = 7000;
 
+    /*     Insert your own ClearBid and MoPub ad units here    */
     private final String adUnit = "";
     private final String moPubAdUnit = "";
 
@@ -33,7 +34,11 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial);
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+        // You only need to call this method once in the app, usually from the MainActivity
+        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
+        UberMedia.requestLocationPermission(this);
+
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
 
         startRefreshTimer();
 
@@ -127,7 +132,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Log.d(CLASS_TAG, "onInterstitialFailed");
         setTextViewText("onInterstitialFailed");
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
     }
 
     @Override
@@ -139,7 +144,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Button button = (Button) findViewById(R.id.showInterstitialButton);
         button.setVisibility(View.INVISIBLE);
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
     }
 
     @Override
