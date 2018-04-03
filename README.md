@@ -1,4 +1,4 @@
-# Android demo app for the UberMedia ClearBid SDK (v0.5.4)
+# Android demo app for the UberMedia ClearBid SDK (v0.5.5)
 
 The UberMedia ClearBid SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
