@@ -8,46 +8,41 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mopub.mobileads.MoPubErrorCode;
-import com.mopub.mobileads.MoPubInterstitial;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 
 import ubermedia.com.ubermedia.UberMedia;
 
-public class InterstitialActivity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
+public class InterstitialActivity extends AppCompatActivity {
 
     private final String CLASS_TAG = "UberMedia";
 
     private final Handler mHandler = new Handler();
-    private Runnable mAdRefreshRunnable;
-
     private final int mAdRefreshRate = 45000;
     private final int mTimeBeforeFirstAdIsShown = 7000;
-
-    /*     Insert your own ClearBid and MoPub ad units here    */
     private final String adUnit = "";
-    private final String moPubAdUnit = "";
-
-    private MoPubInterstitial mInterstitial;
+    private Runnable mAdRefreshRunnable;
+    private PublisherInterstitialAd mInterstitial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial);
 
-        // You only need to call this method once in the app, usually from the MainActivity
-        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
-        UberMedia.requestLocationPermission(this);
-
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
+        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
 
         startRefreshTimer();
 
         Button button = (Button) findViewById(R.id.showInterstitialButton);
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
+            public void onClick(View
+                                        arg0) {
                 mInterstitial.show();
             }
         });
+
+
     }
 
     private void startRefreshTimer() {
@@ -63,10 +58,72 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
                 String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
-                mInterstitial = new MoPubInterstitial(InterstitialActivity.this, moPubAdUnit);
-                mInterstitial.setKeywords(targetKeywords);
-                mInterstitial.setInterstitialAdListener(InterstitialActivity.this);
-                mInterstitial.load();
+                mInterstitial = new PublisherInterstitialAd(InterstitialActivity.this);
+                mInterstitial.setAdUnitId("/6499/example/interstitial");
+                mInterstitial.loadAd(new PublisherAdRequest.Builder().build());
+
+                mInterstitial.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdLoaded() {
+
+                        Log.d(CLASS_TAG, "onInterstitialLoaded");
+
+                        if (mInterstitial.isLoaded()) {
+
+                            setTextViewText("Interstitial Loaded. Press show to launch it.");
+
+                            // Show button
+                            Button button = (Button) findViewById(R.id.showInterstitialButton);
+                            button.setVisibility(View.VISIBLE);
+
+                            button.setOnClickListener(new View.OnClickListener() {
+                                public void onClick(View
+                                                            arg0) {
+                                    mInterstitial.show();
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(int errorCode) {
+                        Log.d(CLASS_TAG, "onInterstitialFailed");
+                        setTextViewText("onInterstitialFailed");
+
+                        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+                    }
+
+                    @Override
+                    public void onAdOpened() {
+                        Log.d(CLASS_TAG, "onInterstitialShown");
+                        setTextViewText("onInterstitialShown");
+
+                        // Hide button
+                        Button button = (Button) findViewById(R.id.showInterstitialButton);
+                        button.setVisibility(View.INVISIBLE);
+
+                        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+                    }
+
+                    @Override
+                    public void onAdLeftApplication() {
+                        // Code to be executed when the user has left the app.
+                    }
+
+                    @Override
+                    public void onAdClosed() {
+                        Log.d(CLASS_TAG, "onInterstitialDismissed");
+                        setTextViewText("onInterstitialDismissed");
+                    }
+
+                    @Override
+                    public void onAdClicked() {
+                        Log.d(CLASS_TAG, "onInterstitialClicked");
+                        setTextViewText("onInterstitialClicked");
+                    }
+                });
+
 
                 mHandler.postDelayed(this, mAdRefreshRate);
             }
@@ -105,59 +162,6 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         stopRefreshTimer();
     }
 
-    @Override
-    protected void onDestroy() {
-        mInterstitial.destroy();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onInterstitialLoaded(MoPubInterstitial interstitial) {
-        Log.d(CLASS_TAG, "onInterstitialLoaded");
-        Log.d(CLASS_TAG, "Is interstitial ready: " + mInterstitial.isReady());
-
-        if (mInterstitial.isReady()) {
-            setTextViewText("Interstitial Loaded. Press show to launch it.");
-
-            // Show button
-            Button button = (Button) findViewById(R.id.showInterstitialButton);
-            button.setVisibility(View.VISIBLE);
-
-            //mInterstitial.show();
-        }
-    }
-
-    @Override
-    public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
-        Log.d(CLASS_TAG, "onInterstitialFailed");
-        setTextViewText("onInterstitialFailed");
-
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
-    }
-
-    @Override
-    public void onInterstitialShown(MoPubInterstitial interstitial) {
-        Log.d(CLASS_TAG, "onInterstitialShown");
-        setTextViewText("onInterstitialShown");
-
-        // Hide button
-        Button button = (Button) findViewById(R.id.showInterstitialButton);
-        button.setVisibility(View.INVISIBLE);
-
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
-    }
-
-    @Override
-    public void onInterstitialClicked(MoPubInterstitial interstitial) {
-        Log.d(CLASS_TAG, "onInterstitialClicked");
-        setTextViewText("onInterstitialClicked");
-    }
-
-    @Override
-    public void onInterstitialDismissed(MoPubInterstitial interstitial) {
-        Log.d(CLASS_TAG, "onInterstitialDismissed");
-        setTextViewText("onInterstitialDismissed");
-    }
 
     private void setTextViewText(String message) {
         TextView loadingTextView = (TextView) findViewById(R.id.interstitialLoadingTextView);
