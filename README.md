@@ -13,15 +13,13 @@ Import this project into Android Studio and press run. You may be prompted to in
 
 If you've installed the ClearBid SDK as described below, please refer to these code samples:
 
-- [Banner - MoPub Auto Refresh](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/BannerAutoRefreshActivity.java)
-- [Banner - Refresh Timer](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/BannerRefreshTimerActivity.java)
-- [Mrec - MoPub Auto Refresh](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/MrecAutoRefresh.java)
-- [Interstitial](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/InterstitialActivity.java)
+- [Banner DFP](https://github.com/cintric/ubermedia-sdk-android-demo/blob/DFP-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/MainActivity.java)
+- [Interstitial DFP](https://github.com/cintric/ubermedia-sdk-android-demo/blob/DFP-Adapter/app/src/main/java/ubermedia/com/headerbiddingdemo/InterstitialActivity.java)
 
 ## Adapter Examples
 
-- [Banner & Mrec Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/com/ubermedia/MoPubAdapter.java)
-- [Interstitial Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/app/src/main/java/com/ubermedia/MoPubInterstitialAdapter.java)
+- [Banner DFP Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/DFP-Adapter/app/src/main/java/com/ubermedia/DfpBannerAdapter.java)
+- [Interstitial DFP Adapter](https://github.com/cintric/ubermedia-sdk-android-demo/blob/DFP-Adapter/app/src/main/java/com/ubermedia/DfpInterstitialAdapter.java)
 
 ## Installation of ClearBid SDK
 
@@ -77,13 +75,17 @@ xmlns:ubermedia="http://schemas.android.com/apk/res-auto"
 And add the banner view:
 
 ```xml
-    <com.mopub.mobileads.MoPubView
+    <com.google.android.gms.ads.doubleclick.PublisherAdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adview"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="/6499/example/banner"> // insert your adUnitId
+    </com.google.android.gms.ads.doubleclick.PublisherAdView>
+
 ```
 
 ### Optional: Enable Location
