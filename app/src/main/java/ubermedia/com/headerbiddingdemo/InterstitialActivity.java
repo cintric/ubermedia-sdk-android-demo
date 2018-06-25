@@ -12,6 +12,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 
+import java.util.Map;
+
 import ubermedia.com.ubermedia.UberMedia;
 
 public class InterstitialActivity extends AppCompatActivity {
@@ -45,6 +47,16 @@ public class InterstitialActivity extends AppCompatActivity {
 
     }
 
+    private PublisherAdRequest.Builder getKeywordsAdRequest() {
+        PublisherAdRequest.Builder builder = new PublisherAdRequest.Builder();
+        Map<String, Object> targetParams = UberMedia.getTargetParams(adUnit);
+        for (Map.Entry<String, Object> entry : targetParams.entrySet()) {
+            builder.addCustomTargeting(entry.getKey(), entry.getValue().toString());
+        }
+
+        return builder;
+    }
+
     private void startRefreshTimer() {
         stopRefreshTimer();
 
@@ -59,8 +71,8 @@ public class InterstitialActivity extends AppCompatActivity {
                 Log.d(CLASS_TAG, targetKeywords);
 
                 mInterstitial = new PublisherInterstitialAd(InterstitialActivity.this);
-                mInterstitial.setAdUnitId("/6499/example/interstitial");
-                mInterstitial.loadAd(new PublisherAdRequest.Builder().build());
+                mInterstitial.setAdUnitId("/2869594/ClearBid-Android-320x480");
+                mInterstitial.loadAd(getKeywordsAdRequest().build());
 
                 mInterstitial.setAdListener(new AdListener() {
                     @Override
@@ -115,12 +127,6 @@ public class InterstitialActivity extends AppCompatActivity {
                     public void onAdClosed() {
                         Log.d(CLASS_TAG, "onInterstitialDismissed");
                         setTextViewText("onInterstitialDismissed");
-                    }
-
-                    @Override
-                    public void onAdClicked() {
-                        Log.d(CLASS_TAG, "onInterstitialClicked");
-                        setTextViewText("onInterstitialClicked");
                     }
                 });
 
