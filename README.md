@@ -1,4 +1,4 @@
-# Android demo app for the UberMedia ClearBid SDK (v0.5.5)
+# Android demo app for the UberMedia ClearBid SDK (v0.5.7)
 
 The UberMedia ClearBid SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
@@ -8,6 +8,8 @@ It's highly recommended that you use a mediation adapter. **If you're using MoPu
 [**MoPub Branch**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/MoPub-Adapter)
 
 [**AdMarvel Branch**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
+
+[**DFP Branch**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/DFP-Adapter)
 
 ## Demo App
 
