@@ -10,10 +10,10 @@ import com.admarvel.android.ads.AdMarvelView;
 
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class MainActivity extends AppCompatActivity {
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private final Handler mHandler = new Handler();
     private Runnable mAdRefreshRunnable;
@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
+        ClearBid.requestLocationPermission(this);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit);
 
-        //UberMedia.DisableLogging();
+        //ClearBid.DisableLogging();
 
         startRefreshTimer();
     }
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Log.d(CLASS_TAG, "Refreshing Ad");
 
-                Map<String, Object> targetParams = UberMedia.getTargetParams(adUnit);
+                Map<String, Object> targetParams = ClearBid.getTargetParams(adUnit);
 
                 for (String name: targetParams.keySet()){
                     String key = name.toString();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 AdMarvelView adMarvelView = (AdMarvelView) findViewById(R.id.ad);
-                adMarvelView.requestNewAd(UberMedia.getTargetParams(adUnit), partnerId, siteId);
+                adMarvelView.requestNewAd(ClearBid.getTargetParams(adUnit), partnerId, siteId);
 
                 adMarvelView.setListener(new AdMarvelView.AdMarvelViewListener() {
                     @Override
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d(CLASS_TAG, "onReceiveAd");
 
                         // Cache a new ad
-                        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+                        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit);
                     }
 
                     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         // AdMarvel Error Codes: https://wiki.operamediaworks.com/display/AMS/Error+Codes
                         if (arg1 != 304) {
                             // Cache a new ad
-                            UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit);
+                            ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit);
                             
                             Log.d(CLASS_TAG, "No ad was received. Call your app waterfall here.");
                             // Call your app waterfall here

@@ -8,13 +8,13 @@ import com.admarvel.android.ads.omwsdkconnector.OMWCustomBannerListener;
 
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UMAdapterBannerView;
-import ubermedia.com.ubermedia.UMListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBAdapterBannerView;
+import ubermedia.com.ubermedia.CBListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class AdMarvelAdapter implements OMWCustomBanner, UMListener {
+public class AdMarvelAdapter implements OMWCustomBanner, CBListener {
 
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
     private OMWCustomBannerListener mAdListener;
 
     @Override
@@ -32,10 +32,7 @@ public class AdMarvelAdapter implements OMWCustomBanner, UMListener {
 
         Log.d(CLASS_TAG, "Ad Unit Received: " + adUnit);
 
-        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, this);
-
-        // Use this instead if you want to change the background color of the view
-        // UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, "#000");
+        CBAdapterBannerView bannerView = ClearBid.getAdapterBannerView(context, adUnit, this);
 
         // Only use this if you don't want the view to automatically resize to ad - useful if you want to keep it full width
         // bannerView.adaptToAdSize(false);
@@ -44,7 +41,7 @@ public class AdMarvelAdapter implements OMWCustomBanner, UMListener {
         omwCustomBannerListener.onBannerAdExpand();
 
         // Ad was shown
-        UberMedia.removeCacheAdPlacement(adUnit);
+        ClearBid.removeCacheAdPlacement(adUnit);
     }
 
     @Override
