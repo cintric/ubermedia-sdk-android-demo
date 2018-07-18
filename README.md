@@ -67,7 +67,7 @@ Your dependencies should now have **Google Play Services** and **ubermedia**.
 To initialize the SDK, you must call the initializeUberMediaSDK method when your app is started.
 
 ```java
-ClearBid.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
 ```
 
 **You should call this method in your Main Activity's onCreate method.
