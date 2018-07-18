@@ -1,4 +1,4 @@
-# Android demo app for the UberMedia ClearBid SDK (v0.5.7)
+# Android demo app for the UberMedia ClearBid SDK (v0.6.3)
 
 The UberMedia ClearBid SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
@@ -50,7 +50,7 @@ Your dependencies should now have **Google Play Services** and **ubermedia**.
 To initialize the SDK, you must call the initializeUberMediaSDK method when your app is started.
 
 ```java
-UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+UberMedia.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
 ```
 
 **You should call this method in your Main Activity's onCreate method.
@@ -70,7 +70,7 @@ xmlns:ubermedia="http://schemas.android.com/apk/res-auto"
 And add the banner view:
 
 ```xml
-    <ubermedia.com.ubermedia.UMBannerView
+    <ubermedia.com.ubermedia.CBBannerView
         android:id="@+id/adview"
         ubermedia:ad_unit="test_ad_placement_id"
         android:layout_width="wrap_content"
@@ -81,7 +81,7 @@ And add the banner view:
 To center the banner view, change the above example to:
 
 ```xml
-    <ubermedia.com.ubermedia.UMBannerView
+    <ubermedia.com.ubermedia.CBBannerView
         android:id="@+id/adview"
         ubermedia:ad_unit="test_ad_placement_id"
         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@ To center the banner view, change the above example to:
 
 ### Ad Units
 
-Inside the UMBannerView xml is an `ubermedia:ad_unit` attribute.
+Inside the CBBannerView xml is an `ubermedia:ad_unit` attribute.
 
 Test Ad Unit: `test_ad_placement_id` will return a test 320x50 banner.
 
@@ -121,7 +121,7 @@ The location permissions are:
 To enable location, call the requestLocationPermission method. **For Android 6.0 and above, calling this method will trigger a location permission popup that the user has to allow.** 
 
 ```java
-UberMedia.requestLocationPermission(this);
+ClearBid.requestLocationPermission(this);
 ```
 
 ![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/request-location.png)
