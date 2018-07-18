@@ -1,7 +1,16 @@
-# Android demo app for the UberMedia ClearBid SDK (v0.5.5)
+# Android demo app for the UberMedia ClearBid SDK (v0.6.3)
 
 The UberMedia ClearBid SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
+## Mediation Adapters: **You are in the DFP Branch**
+
+If you are using a different mediation layer, please switch branches:
+
+[**MoPub Branch**](https://github.com/cintric/ubermedia-sdk-android-demo)
+
+[**DFP Branch**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/DFP-Adapter)
+
+[**AdMarvel Branch**](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
 
 ## Demo App
 
@@ -56,7 +65,7 @@ Your dependencies should now have **Google Play Services** and **ubermedia**.
 To initialize the SDK, you must call the initializeUberMediaSDK method when your app is started.
 
 ```java
-UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
 ```
 
 **You should call this method in your Main Activity's onCreate method.
@@ -102,7 +111,7 @@ The location permissions are:
 To enable location, call the requestLocationPermission method. **For Android 6.0 and above, calling this method will trigger a location permission popup that the user has to allow.** 
 
 ```java
-UberMedia.requestLocationPermission(this);
+ClearBid.requestLocationPermission(this);
 ```
 
 ![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/request-location.png)
@@ -110,4 +119,4 @@ UberMedia.requestLocationPermission(this);
 #### Location popup for Android 6.0 and above:
 
 <br />
-<img src="https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/location-popup.png" width="450" />
+<img src="https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/location-popup.png" width="450" />
