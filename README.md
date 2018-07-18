@@ -42,11 +42,11 @@ Installing the UberMedia Header Bidding SDK is done in 3 steps.
 
 ### Import SDK into your project
 
-After downloading the SDK from [here](https://github.com/cintric/ubermedia-sdk-android-demo/blob/master/ubermedia/ubermedia.aar), click `File > Project Structure` in Android Studio. Click the green plus icon in the top left, click `Import AAR`, select the ubermedia SDK file, press `OK` and wait for Gradle to finish syncing.
+After downloading the SDK from [here](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/ubermedia/ubermedia.aar), click `File > Project Structure` in Android Studio. Click the green plus icon in the top left, click `Import AAR`, select the ubermedia SDK file, press `OK` and wait for Gradle to finish syncing.
 
 Once Gradle is finished (only a few seconds), click `File > Project Structure` again. Click on `app`, then `Depenencies` tab, then the green icon (top right), select `Module dependency`, click on ubermedia, then press Ok and wait for Gradle to sync again.
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/import-module.gif)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/import-module.gif)
 
 ### Add Google Play Services to your build.gradle file
 
@@ -60,7 +60,7 @@ compile 'com.google.android.gms:play-services:10.2.6'
 
 Your dependencies should now have **Google Play Services** and **ubermedia**.
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/build-gradle.png)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/build-gradle.png)
 
 ### Initalize the SDK
 
@@ -73,7 +73,7 @@ ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
 **You should call this method in your Main Activity's onCreate method.
 Put in your own sdk key and secret here.**
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/sdk-init.png)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/sdk-init.png)
 
 ### Displaying Banner Ad
 
@@ -112,7 +112,7 @@ To enable location, call the requestLocationPermission method. **For Android 6.0
 ClearBid.requestLocationPermission(this);
 ```
 
-![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/master/doc_assets/request-location.png)
+![](https://raw.githubusercontent.com/cintric/ubermedia-sdk-android-demo/MoPub-Adapter/doc_assets/request-location.png)
 
 #### Location popup for Android 6.0 and above:
 
