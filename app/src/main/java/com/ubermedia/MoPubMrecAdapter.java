@@ -8,12 +8,12 @@ import com.mopub.mobileads.MoPubErrorCode;
 
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UMAdapterBannerView;
-import ubermedia.com.ubermedia.UMListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBAdapterBannerView;
+import ubermedia.com.ubermedia.CBListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class MoPubMrecAdapter extends CustomEventBanner implements UMListener {
-    private final String CLASS_TAG = "UberMedia";
+public class MoPubMrecAdapter extends CustomEventBanner implements CBListener {
+    private final String CLASS_TAG = "ClearBid";
 
     private CustomEventBannerListener mBannerListener;
 
@@ -35,8 +35,8 @@ public class MoPubMrecAdapter extends CustomEventBanner implements UMListener {
 
         Log.d(CLASS_TAG, "Ad Unit Received: " + adUnit);
 
-        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, this);
-        UberMedia.removeCacheAdPlacement(adUnit);
+        CBAdapterBannerView bannerView = ClearBid.getAdapterBannerView(context, adUnit, this);
+        ClearBid.removeCacheAdPlacement(adUnit);
 
         Log.d(CLASS_TAG, bannerView.CurrentBid + "");
 

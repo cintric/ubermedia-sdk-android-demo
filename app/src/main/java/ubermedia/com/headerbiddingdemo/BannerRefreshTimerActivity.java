@@ -8,10 +8,10 @@ import android.util.Log;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubView;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class BannerRefreshTimerActivity extends AppCompatActivity implements MoPubView.BannerAdListener {
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private final Handler mHandler = new Handler();
     private Runnable mAdRefreshRunnable;
@@ -29,12 +29,12 @@ public class BannerRefreshTimerActivity extends AppCompatActivity implements MoP
         setContentView(R.layout.activity_banner_refresh_timer);
 
         // You only need to call this method once in the app, usually from the MainActivity
-        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "insert api key", "insert secret key");
+        ClearBid.requestLocationPermission(this);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
-        //UberMedia.DisableLogging();
+        //ClearBid.DisableLogging();
 
         startRefreshTimer();
     }
@@ -49,7 +49,7 @@ public class BannerRefreshTimerActivity extends AppCompatActivity implements MoP
             public void run() {
                 Log.d(CLASS_TAG, "Refreshing Ad");
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
                 MoPubView moPubView = (MoPubView) findViewById(R.id.bannerTimerView);
@@ -101,7 +101,7 @@ public class BannerRefreshTimerActivity extends AppCompatActivity implements MoP
         Log.d(CLASS_TAG, "onBannerLoaded");
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
     }
 
     @Override
@@ -109,7 +109,7 @@ public class BannerRefreshTimerActivity extends AppCompatActivity implements MoP
         Log.d(CLASS_TAG, "onBannerFailed: " + errorCode.toString());
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
         Log.d(CLASS_TAG, "No ad was received. Call your app waterfall here.");
         // Call your app waterfall here

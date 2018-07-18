@@ -8,12 +8,12 @@ import com.mopub.mobileads.MoPubErrorCode;
 
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UMInterstitialListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBInterstitialListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class MoPubInterstitialAdapter extends CustomEventInterstitial implements UMInterstitialListener {
+public class MoPubInterstitialAdapter extends CustomEventInterstitial implements CBInterstitialListener {
 
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private Context mParentContext;
     private String mAdUnit;
@@ -44,7 +44,7 @@ public class MoPubInterstitialAdapter extends CustomEventInterstitial implements
     @Override
     protected void showInterstitial() {
         Log.d(CLASS_TAG, "Showing Adapter Interstitial");
-        UberMedia.getAdapterInterstitialView(mParentContext, mAdUnit, this).show();
+        ClearBid.getAdapterInterstitialView(mParentContext, mAdUnit, this).show();
     }
 
     @Override

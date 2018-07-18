@@ -11,11 +11,11 @@ import android.widget.TextView;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class InterstitialActivity extends AppCompatActivity implements MoPubInterstitial.InterstitialAdListener {
 
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private final Handler mHandler = new Handler();
     private Runnable mAdRefreshRunnable;
@@ -35,10 +35,10 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         setContentView(R.layout.activity_interstitial);
 
         // You only need to call this method once in the app, usually from the MainActivity
-        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "insert api key", "insert secret key");
+        ClearBid.requestLocationPermission(this);
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
+        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
 
         startRefreshTimer();
 
@@ -60,7 +60,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
             public void run() {
                 Log.d(CLASS_TAG, "Refreshing Interstitial Ad");
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
                 mInterstitial = new MoPubInterstitial(InterstitialActivity.this, moPubAdUnit);
@@ -132,7 +132,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Log.d(CLASS_TAG, "onInterstitialFailed");
         setTextViewText("onInterstitialFailed");
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
+        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
     }
 
     @Override
@@ -144,7 +144,7 @@ public class InterstitialActivity extends AppCompatActivity implements MoPubInte
         Button button = (Button) findViewById(R.id.showInterstitialButton);
         button.setVisibility(View.INVISIBLE);
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
+        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit, new int[]{320, 480});
     }
 
     @Override

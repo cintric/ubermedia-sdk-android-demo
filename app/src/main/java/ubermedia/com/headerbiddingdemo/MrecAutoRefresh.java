@@ -7,10 +7,10 @@ import android.util.Log;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubView;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class MrecAutoRefresh extends AppCompatActivity implements MoPubView.BannerAdListener {
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     /*     Insert your own ClearBid and MoPub ad units here    */
     private final String adUnit = "";
@@ -24,14 +24,14 @@ public class MrecAutoRefresh extends AppCompatActivity implements MoPubView.Bann
         setContentView(R.layout.activity_mrec_auto_refresh);
 
         // You only need to call this method once in the app, usually from the MainActivity
-        UberMedia.initializeUberMediaSDK(this, "insert api key", "insert secret key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "insert api key", "insert secret key");
+        ClearBid.requestLocationPermission(this);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
 
-        //UberMedia.DisableLogging();
+        //ClearBid.DisableLogging();
 
-        String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+        String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
         Log.d(CLASS_TAG, targetKeywords);
 
         mMrecView = (MoPubView) findViewById(R.id.mrecTimerView);
@@ -48,9 +48,9 @@ public class MrecAutoRefresh extends AppCompatActivity implements MoPubView.Bann
         Log.d(CLASS_TAG, "onBannerLoaded");
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
 
-        String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+        String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
         mMrecView.setKeywords(targetKeywords);
         Log.d(CLASS_TAG, targetKeywords);
     }
@@ -60,9 +60,9 @@ public class MrecAutoRefresh extends AppCompatActivity implements MoPubView.Bann
         Log.d(CLASS_TAG, "onBannerFailed: " + errorCode.toString());
 
         // Cache a new ad
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{300, 250});
 
-        String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+        String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
         mMrecView.setKeywords(targetKeywords);
         Log.d(CLASS_TAG, targetKeywords);
 
