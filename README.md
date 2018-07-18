@@ -40,7 +40,7 @@ Installing the UberMedia Header Bidding SDK is done in 3 steps.
 
 ### Import SDK into your project
 
-After downloading the SDK from [here](https://github.com/cintric/ubermedia-sdk-android-demo/blob/master/ubermedia/ubermedia.aar), click `File > Project Structure` in Android Studio. Click the green plus icon in the top left, click `Import AAR`, select the ubermedia SDK file, press `OK` and wait for Gradle to finish syncing.
+After downloading the SDK from [here](https://github.com/cintric/ubermedia-sdk-android-demo/blob/MoPub-Adapter/ubermedia/ubermedia.aar), click `File > Project Structure` in Android Studio. Click the green plus icon in the top left, click `Import AAR`, select the ubermedia SDK file, press `OK` and wait for Gradle to finish syncing.
 
 Once Gradle is finished (only a few seconds), click `File > Project Structure` again. Click on `app`, then `Depenencies` tab, then the green icon (top right), select `Module dependency`, click on ubermedia, then press Ok and wait for Gradle to sync again.
 
