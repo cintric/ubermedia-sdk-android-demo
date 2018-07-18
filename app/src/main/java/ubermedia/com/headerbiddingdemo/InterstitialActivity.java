@@ -14,11 +14,11 @@ import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class InterstitialActivity extends AppCompatActivity {
 
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private final Handler mHandler = new Handler();
     private final int mAdRefreshRate = 45000;
@@ -32,7 +32,7 @@ public class InterstitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial);
 
-        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
 
         startRefreshTimer();
 
@@ -49,7 +49,7 @@ public class InterstitialActivity extends AppCompatActivity {
 
     private PublisherAdRequest.Builder getKeywordsAdRequest() {
         PublisherAdRequest.Builder builder = new PublisherAdRequest.Builder();
-        Map<String, Object> targetParams = UberMedia.getTargetParams(adUnit);
+        Map<String, Object> targetParams = ClearBid.getTargetParams(adUnit);
         for (Map.Entry<String, Object> entry : targetParams.entrySet()) {
             builder.addCustomTargeting(entry.getKey(), entry.getValue().toString());
         }
@@ -67,7 +67,7 @@ public class InterstitialActivity extends AppCompatActivity {
             public void run() {
                 Log.d(CLASS_TAG, "Refreshing Interstitial Ad");
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
                 mInterstitial = new PublisherInterstitialAd(InterstitialActivity.this);
@@ -103,7 +103,7 @@ public class InterstitialActivity extends AppCompatActivity {
                         Log.d(CLASS_TAG, "onInterstitialFailed");
                         setTextViewText("onInterstitialFailed");
 
-                        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+                        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
                     }
 
                     @Override
@@ -115,7 +115,7 @@ public class InterstitialActivity extends AppCompatActivity {
                         Button button = (Button) findViewById(R.id.showInterstitialButton);
                         button.setVisibility(View.INVISIBLE);
 
-                        UberMedia.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
+                        ClearBid.preCacheInterstitialPlacement(getApplicationContext(), adUnit);
                     }
 
                     @Override

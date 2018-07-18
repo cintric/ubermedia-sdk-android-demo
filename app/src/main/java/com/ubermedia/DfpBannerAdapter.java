@@ -9,12 +9,12 @@ import com.google.android.gms.ads.mediation.MediationAdRequest;
 import com.google.android.gms.ads.mediation.customevent.CustomEventBanner;
 import com.google.android.gms.ads.mediation.customevent.CustomEventBannerListener;
 
-import ubermedia.com.ubermedia.UMAdapterBannerView;
-import ubermedia.com.ubermedia.UMListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBAdapterBannerView;
+import ubermedia.com.ubermedia.CBListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class DfpBannerAdapter implements CustomEventBanner, UMListener {
-    private final String CLASS_TAG = "UberMedia";
+public class DfpBannerAdapter implements CustomEventBanner, CBListener {
+    private final String CLASS_TAG = "ClearBid";
 
 
     private CustomEventBannerListener mAdListener;
@@ -35,8 +35,8 @@ public class DfpBannerAdapter implements CustomEventBanner, UMListener {
 
         Log.d(CLASS_TAG, "Ad Unit Received: " + adUnit);
 
-        UMAdapterBannerView bannerView = UberMedia.getAdapterBannerView(context, adUnit, this);
-        UberMedia.removeCacheAdPlacement(adUnit);
+        CBAdapterBannerView bannerView = ClearBid.getAdapterBannerView(context, adUnit, this);
+        ClearBid.removeCacheAdPlacement(adUnit);
 
         Log.d(CLASS_TAG, bannerView.CurrentBid + "");
 

@@ -9,17 +9,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
 import com.google.android.gms.ads.doubleclick.PublisherAdView;
 
-
 import java.util.Map;
 
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class MainActivity extends AppCompatActivity  {
-    private final String CLASS_TAG = "UberMedia";
+    private final String CLASS_TAG = "ClearBid";
 
     private final Handler mHandler = new Handler();
     private Runnable mAdRefreshRunnable;
@@ -36,16 +34,16 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-api-secret");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-api-secret");
+        ClearBid.requestLocationPermission(this);
 
-        UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+        ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
-        //UberMedia.DisableLogging();
+        //ClearBid.DisableLogging();
 
         Log.d(CLASS_TAG, "Refreshing Ad");
 
-        String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+        String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
         Log.d(CLASS_TAG, targetKeywords);
 
         mBannerView = (PublisherAdView) findViewById(R.id.adview);
@@ -58,9 +56,9 @@ public class MainActivity extends AppCompatActivity  {
                 Log.d(CLASS_TAG, "onBannerLoaded");
 
                 // Cache a new ad
-                UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+                ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);            }
 
             @Override
@@ -69,9 +67,9 @@ public class MainActivity extends AppCompatActivity  {
                 Log.d(CLASS_TAG, "onBannerFailed: " + errorCode+"");
 
                 // Cache a new ad
-                UberMedia.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
+                ClearBid.preCacheAdPlacement(getApplicationContext(), adUnit, new int[]{320, 50});
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
                 Log.d(CLASS_TAG, "No ad was received. Call your app waterfall here.");
@@ -122,7 +120,7 @@ public class MainActivity extends AppCompatActivity  {
             public void run() {
                 Log.d(CLASS_TAG, "Refreshing Ad");
 
-                String targetKeywords = UberMedia.getTargetParamsAsString(adUnit);
+                String targetKeywords = ClearBid.getTargetParamsAsString(adUnit);
                 Log.d(CLASS_TAG, targetKeywords);
 
                 mBannerView.loadAd(getKeywordsAdRequest().build());
@@ -166,7 +164,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private PublisherAdRequest.Builder getKeywordsAdRequest() {
         PublisherAdRequest.Builder builder = new PublisherAdRequest.Builder();
-        Map<String, Object> targetParams = UberMedia.getTargetParams(adUnit);
+        Map<String, Object> targetParams = ClearBid.getTargetParams(adUnit);
         for (Map.Entry<String, Object> entry : targetParams.entrySet()) {
             builder.addCustomTargeting(entry.getKey(), entry.getValue().toString());
         }
