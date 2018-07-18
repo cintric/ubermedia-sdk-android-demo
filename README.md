@@ -2,6 +2,15 @@
 
 The UberMedia ClearBid SDK for Android allows you to optimize ad revenue by creating an open auction for your ad space instead of using the traditional waterfall method like other mediation SDKs. It is lightweight and optimized to minimize impact on your application.
 
+## You are in the MoPub Branch
+
+If you are using a different mediation layer, please switch branches:
+
+[MoPub Branch](https://github.com/cintric/ubermedia-sdk-android-demo)
+
+[DFP Branch](https://github.com/cintric/ubermedia-sdk-android-demo/tree/DFP-Adapter)
+
+[AdMarvel Branch](https://github.com/cintric/ubermedia-sdk-android-demo/tree/AdMarvel-Adapter)
 
 ## Demo App
 
@@ -58,7 +67,7 @@ Your dependencies should now have **Google Play Services** and **ubermedia**.
 To initialize the SDK, you must call the initializeUberMediaSDK method when your app is started.
 
 ```java
-UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
+ClearBid.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
 ```
 
 **You should call this method in your Main Activity's onCreate method.
