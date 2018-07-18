@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import ubermedia.com.ubermedia.UMBannerView;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBBannerView;
+import ubermedia.com.ubermedia.ClearBid;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
+        ClearBid.requestLocationPermission(this);
 
         // Change the refresh rate to 15 seconds
-        UMBannerView adView = (UMBannerView) findViewById(R.id.adview);
+        CBBannerView adView = (CBBannerView) findViewById(R.id.adview);
         adView.setAdRefreshRate(15);
 
         // Button logic to go test interstitials

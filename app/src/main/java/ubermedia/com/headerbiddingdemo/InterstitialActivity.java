@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import ubermedia.com.ubermedia.UMInterstitial;
-import ubermedia.com.ubermedia.UMInterstitialListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBInterstitial;
+import ubermedia.com.ubermedia.CBInterstitialListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class InterstitialActivity extends AppCompatActivity implements UMInterstitialListener {
+public class InterstitialActivity extends AppCompatActivity implements CBInterstitialListener {
 
     private final String CLASS_TAG = "InterstitialActivity";
 
@@ -20,12 +20,12 @@ public class InterstitialActivity extends AppCompatActivity implements UMInterst
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interstitial);
 
-        UberMedia.initializeUberMediaSDK(this, "test-1-api-key", "test-1-secret-key");
-        UberMedia.requestLocationPermission(this);
+        ClearBid.initializeClearBidSDK(this, "test-1-api-key", "test-1-secret-key");
+        ClearBid.requestLocationPermission(this);
 
         Button button = (Button) findViewById(R.id.showInterstitialButton);
 
-        final UMInterstitial interstitial = new UMInterstitial(getApplicationContext(), this, this);
+        final CBInterstitial interstitial = new CBInterstitial(getApplicationContext(), this, this);
         interstitial.setAdUnit("internal_test_interstitial_ad_placement");
         interstitial.load();
 
