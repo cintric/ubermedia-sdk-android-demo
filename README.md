@@ -4,6 +4,8 @@ The UberMedia Header Bidding SDK for Android allows you to optimize ad revenue b
 
 ## Mediation Adapters: **You are in the AdMarvel Branch**
 
+_AdMarvel SDK Requires Instant Run to be Disabled_
+
 If you are using a different mediation layer, please switch branches:
 
 [**MoPub Branch**](https://github.com/cintric/ubermedia-sdk-android-demo)
