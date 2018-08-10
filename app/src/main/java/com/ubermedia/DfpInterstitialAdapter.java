@@ -8,11 +8,11 @@ import com.google.android.gms.ads.mediation.MediationAdRequest;
 import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitial;
 import com.google.android.gms.ads.mediation.customevent.CustomEventInterstitialListener;
 
-import ubermedia.com.ubermedia.UMInterstitialListener;
-import ubermedia.com.ubermedia.UberMedia;
+import ubermedia.com.ubermedia.CBInterstitialListener;
+import ubermedia.com.ubermedia.ClearBid;
 
-public class DfpInterstitialAdapter implements CustomEventInterstitial,UMInterstitialListener {
-    private final String CLASS_TAG = "UberMedia";
+public class DfpInterstitialAdapter implements CustomEventInterstitial, CBInterstitialListener {
+    private final String CLASS_TAG = "ClearBid";
 
 
     private CustomEventInterstitialListener mInterstitialLisener;
@@ -42,7 +42,7 @@ public class DfpInterstitialAdapter implements CustomEventInterstitial,UMInterst
     @Override
     public void showInterstitial() {
         Log.d(CLASS_TAG, "Showing Adapter Interstitial");
-        UberMedia.getAdapterInterstitialView(mParentContext, mAdUnit, this).show();
+        ClearBid.getAdapterInterstitialView(mParentContext, mAdUnit, this).show();
     }
 
     @Override
