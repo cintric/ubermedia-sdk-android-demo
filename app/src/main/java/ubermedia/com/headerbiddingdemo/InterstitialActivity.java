@@ -24,6 +24,7 @@ public class InterstitialActivity extends AppCompatActivity {
     private final int mAdRefreshRate = 45000;
     private final int mTimeBeforeFirstAdIsShown = 7000;
     private final String adUnit = "";
+    private final String mDFPAdUnit = "";
     private Runnable mAdRefreshRunnable;
     private PublisherInterstitialAd mInterstitial;
 
@@ -71,7 +72,7 @@ public class InterstitialActivity extends AppCompatActivity {
                 Log.d(CLASS_TAG, targetKeywords);
 
                 mInterstitial = new PublisherInterstitialAd(InterstitialActivity.this);
-                mInterstitial.setAdUnitId("/2869594/ClearBid-Android-320x480");
+                mInterstitial.setAdUnitId(mDFPAdUnit);
                 mInterstitial.loadAd(getKeywordsAdRequest().build());
 
                 mInterstitial.setAdListener(new AdListener() {
