@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/admarvel/admarvel.iml" filepath="$PROJECT_DIR$/admarvel/admarvel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/admarvel/admarvel.iml" filepath="$PROJECT_DIR$/admarvel/admarvel.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ubermedia/ubermedia.iml" filepath="$PROJECT_DIR$/ubermedia/ubermedia.iml" />
       <module fileurl="file://$PROJECT_DIR$/ubermedia-sdk-android-demo.iml" filepath="$PROJECT_DIR$/ubermedia-sdk-android-demo.iml" />
